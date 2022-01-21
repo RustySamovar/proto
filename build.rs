@@ -12,6 +12,8 @@ fn main() -> Result<()> {
 
         // Game protocol
         "packet_header",
+        // Platform type enum
+        "PlatformType",
 
         "UnionCmdNotify",
         "GetPlayerTokenReq",
