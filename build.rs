@@ -55,6 +55,14 @@ fn main() -> Result<()> {
         "EnterWorldAreaReq",
         "EnterWorldAreaRsp",
 
+        "CombatInvocationsNotify",
+
+        // Internal CIN data
+        "EntityMoveInfo",
+        "EvtSetAttackTargetInfo",
+        "EvtFaceToDirInfo",
+        "EvtBeingHitInfo",
+
         "OpenStateType",
         "FightPropType",
         "PropType",
