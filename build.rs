@@ -43,6 +43,7 @@ fn main() -> Result<()> {
         "SceneInitFinishRsp",
         "EnterSceneDoneReq",
         "SceneEntityAppearNotify",
+        "SceneEntityDisappearNotify",
         "EnterSceneDoneRsp",
         "PostEnterSceneReq",
         "PostEnterSceneRsp",
