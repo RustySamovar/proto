@@ -82,6 +82,9 @@ fn main() -> Result<()> {
         "GetPlayerFriendListReq",
         "GetPlayerFriendListRsp",
 
+        "SceneTransToPointReq",
+        "SceneTransToPointRsp",
+
         "StoreItemChangeNotify",
         "StoreItemDelNotify",
         "ItemAddHintNotify",
