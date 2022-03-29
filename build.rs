@@ -12,8 +12,10 @@ fn main() -> Result<()> {
 
         // Game protocol
         "packet_header",
-        // Platform type enum
+        // Different game enumerations
         "PlatformType",
+        //"GrowCurveType",
+        "ArithType",
 
         "UnionCmdNotify",
         "GetPlayerTokenReq",
@@ -25,8 +27,6 @@ fn main() -> Result<()> {
         "AvatarDataNotify",
         "PlayerEnterSceneNotify",
         "PlayerLoginRsp",
-        "GetPlayerSocialDetailReq",
-        "GetPlayerSocialDetailRsp",
         "EnterSceneReadyReq",
         "EnterSceneReadyRsp",
         "SceneInitFinishReq",
@@ -58,6 +58,34 @@ fn main() -> Result<()> {
 
         "CombatInvocationsNotify",
 
+        "NpcTalkReq",
+        "NpcTalkRsp",
+
+        "GetShopReq",
+        "GetShopRsp",
+
+        "BuyGoodsReq",
+        "BuyGoodsRsp",
+
+        "GetSceneAreaReq",
+        "GetSceneAreaRsp",
+        "GetScenePointReq",
+        "GetScenePointRsp",
+
+        "PlayerSetPauseReq",
+        "PlayerSetPauseRsp",
+
+        "GetPlayerSocialDetailReq",
+        "GetPlayerSocialDetailRsp",
+        "GetPlayerBlacklistReq",
+        "GetPlayerBlacklistRsp",
+        "GetPlayerFriendListReq",
+        "GetPlayerFriendListRsp",
+
+        "StoreItemChangeNotify",
+        "StoreItemDelNotify",
+        "ItemAddHintNotify",
+
         // Internal CIN data
         "EntityMoveInfo",
         "EvtSetAttackTargetInfo",
@@ -67,11 +95,28 @@ fn main() -> Result<()> {
         "OpenStateType",
         "FightPropType",
         "PropType",
+        "ActionReasonType",
+    ];
+
+    let annotated_enums = vec![
+        "GrowCurveType",
+        "ArithType",
+        "FightPropType",
     ];
 
     let protos: Vec<String> = protos.iter().map(|&x| format!("{}/{}.proto", proto_dir, x)).collect();
 
-    let ret = prost_build::compile_protos(&protos, &[format!("{}/", proto_dir)]);
+    let mut config = prost_build::Config::new();
+
+    config.type_attribute(".", "#[derive(serde::Deserialize)]");
+
+    for e in annotated_enums.iter() {
+        // This doesn't add but OVERRIDE type attribute
+        // Very confusing
+        config.type_attribute(format!(".Proto.{}", e), "#[derive(serde::Deserialize)] #[serde(rename_all = \"SCREAMING_SNAKE_CASE\")]");
+    }
+
+    let ret = config.compile_protos(&protos, &[format!("{}/", proto_dir)]);
 
     match ret {
         Ok(_) => return Ok(()),
