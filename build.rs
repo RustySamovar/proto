@@ -84,6 +84,9 @@ fn main() -> Result<()> {
 
         "SceneTransToPointReq",
         "SceneTransToPointRsp",
+        "UnlockTransPointReq",
+        "UnlockTransPointRsp",
+        "ScenePointUnlockNotify",
 
         "StoreItemChangeNotify",
         "StoreItemDelNotify",
