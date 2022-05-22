@@ -14,7 +14,7 @@ def read_map(filename):
     with open(filename, 'rt') as csvfile:
         r = csv.reader(csvfile)
         for row in r:
-            yield mint(row[1]), int(row[2])
+            yield mint(row[1]), mint(row[2])
 
 num = re.compile("^([\t ]+)([A-Za-z]+) = ([0-9]+),$")
 
