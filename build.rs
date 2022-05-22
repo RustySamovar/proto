@@ -92,6 +92,8 @@ fn main() -> Result<()> {
         "StoreItemDelNotify",
         "ItemAddHintNotify",
 
+        "CoopDataNotify",
+
         // Internal CIN data
         "EntityMoveInfo",
         "EvtSetAttackTargetInfo",
