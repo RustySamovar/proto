@@ -4,12 +4,6 @@ fn main() -> Result<()> {
     let proto_dir = "protobuf";
 
     let protos = vec![
-        // Dispatch protocol
-        "QueryRegionListHttpRsp",
-        "QueryCurrRegionHttpRsp",
-        "RegionSimpleInfo",
-        "RegionInfo",
-
         // Game protocol
         "packet_header",
         // Different game enumerations
